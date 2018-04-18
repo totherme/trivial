@@ -27,3 +27,19 @@ jobs:
           export GOPATH=$PWD/go
           cd $GOPATH/src/github.com/totherme/trivial
           go test ./...
+- name: cf-push-trivial-app
+  plan:
+  - get: trivial-app
+    trigger: true
+    passed: ["test-trivial-app"]
+  - task: cf-push
+    config:
+      inputs:
+      - name: trivial-app
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: governmentpaas/cf-cli}
+      run:
+        path: cf
+        args: ["push"]
