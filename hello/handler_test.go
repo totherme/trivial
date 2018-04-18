@@ -16,6 +16,6 @@ var _ = Describe("Handler", func() {
 		hello.Handler(response, nil)
 		body, err := ioutil.ReadAll(response.Body)
 		Expect(err).NotTo(HaveOccurred())
-		Expect(body).To(ContainSubstring("Hello the cloud!"))
+		Expect(body).To(ContainSubstring("Hello world!"))
 	})
 })
