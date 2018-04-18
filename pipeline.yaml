@@ -40,6 +40,13 @@ jobs:
       image_resource:
         type: docker-image
         source: {repository: governmentpaas/cf-cli}
+      params:
+        CF_USERNAME: ((cf-username))
+        CF_PASSWORD: ((cf-password))
       run:
-        path: cf
-        args: ["push"]
+        path: sh
+        args:
+        - -c
+        - |
+          cf login -u "$CF_USERNAME" -p "$CF_PASSWORD" -a https://api.sys.salinas.cf-app.com
+          cf push
