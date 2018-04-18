@@ -48,5 +48,5 @@ jobs:
         args:
         - -c
         - |
-          cf login -u "$CF_USERNAME" -p "$CF_PASSWORD" -a https://api.sys.salinas.cf-app.com
+          cf login -u "$CF_USERNAME" -p "$CF_PASSWORD" -a https://api.sys.salinas.cf-app.com --skip-ssl-validation
           cf push
