@@ -14,13 +14,13 @@ jobs:
     config:
       inputs:
       - name: trivial-app
-        path: $GOPATH/src/github.com/totherme/trivial
+        path: /go/src/github.com/totherme/trivial
       platform: linux
       image_resource:
         type: docker-image
         source: {repository: golang}
       run:
-        dir: $GOPATH/src/github.com/totherme/trivial
+        dir: /go/src/github.com/totherme/trivial
         path: go
         args: ["test", "./..."]
 
