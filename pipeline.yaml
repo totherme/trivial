@@ -1,0 +1,22 @@
+resources:
+- name: trivial-app
+  type: git
+  source:
+    uri: https://github.com/totherme/trivial
+    branch: master
+
+jobs:
+- name: hello-world
+  plan:
+  - task: say-hello
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: alpine}
+      run:
+        path: echo
+        args: ["Hello, world!"]
+  - get: trivial-app
+    trigger: true
+
