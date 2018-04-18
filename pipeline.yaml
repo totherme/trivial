@@ -6,17 +6,17 @@ resources:
     branch: master
 
 jobs:
-- name: hello-world
+- name: test-trivial-app
   plan:
-  - task: say-hello
+  - get: trivial-app
+    trigger: true
+  - task: go-test
     config:
       platform: linux
       image_resource:
         type: docker-image
-        source: {repository: alpine}
+        source: {repository: golang}
       run:
-        path: echo
-        args: ["Hello, world!"]
-  - get: trivial-app
-    trigger: true
+        path: go
+        args: ["test", "./..."]
 
