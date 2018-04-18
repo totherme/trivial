@@ -44,6 +44,7 @@ jobs:
         CF_USERNAME: ((cf-username))
         CF_PASSWORD: ((cf-password))
       run:
+        dir: trivial-app
         path: sh
         args:
         - -c
